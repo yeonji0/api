@@ -11,9 +11,9 @@ class ApiApplicationTests {
 	// MySQL Connector 의 클래스. DB 연결 드라이버 정의
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	// DB 경로
-	private static final String URL = "jdbc:mysql://localhost:3306/example?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
-	private static final String USER = "user";
-	private static final String PASSWORD = "UserPassword";
+	private static final String URL = "jdbc:mysql://10.200.100.110:3306/example?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false";
+	private static final String USER = "root";
+	private static final String PASSWORD = "0321";
 
 	@Test
 	void contextLoads() throws Exception{
