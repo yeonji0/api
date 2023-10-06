@@ -4,16 +4,27 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <!-- 카멜 케이스 VO 매핑 -->
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-        <!-- 쿼리 결과 필드가 null인 경우, 누락이 되서 나오지 않게 설정-->
-        <setting name="callSettersOnNulls" value="true"/>
-        <!-- 쿼리에 보내는 파라미터가 null인 경우, 오류가 발생하는 것 방지 -->
-        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>  <!-- 카멜 케이스 VO 매핑 -->
+        <setting name="callSettersOnNulls" value="true"/>  <!-- 쿼리 결과 필드가 null인 경우, 누락이 되서 나오지 않게 설정-->
+        <setting name="jdbcTypeForNull" value="NULL"/>     <!-- 쿼리에 보내는 파라미터가 null인 경우, 오류가 발생하는 것 방지 -->
     </settings>
+
     <typeAliases>
-
-        <typeAlias type="com.board.api.board.Board" alias="board" />
-
+        <typeAlias type="com.board.api.board.Board" alias="Board" />
     </typeAliases>
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="board">-->
+<!--                <property name="num" value="${num}"/>-->
+<!--                <property name="name" value="${name}"/>-->
+<!--                <property name="title" value="${title}"/>-->
+<!--                <property name="content" value="${content}"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+    <!-- 매퍼 파일 경로를 지정 -->
+    <mappers>
+        <mapper resource="classpath:path/com/board/api/board/mapper/BoardMapper.xml"/>
+    </mappers>
 </configuration>

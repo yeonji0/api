@@ -1,8 +1,13 @@
 package com.board.api.board;
 
+//import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+//import org.springframework.data.annotation.CreatedDate;
+//import org.springframework.data.annotation.LastModifiedDate;
+import java.util.Date;
+import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Board {
@@ -12,9 +17,14 @@ public class Board {
     private String title;
     private String content;
 
-    @Data
-    @EqualsAndHashCode(callSuper = false)
-    public static class BoardUser {
-        private Long name;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
+    public Board(){}
+    public Board(Long num, String name, String title, String content) {
+        this.num = num;
+        this.name = name;
+        this.title = title;
+        this.content = content;
     }
+
 }
