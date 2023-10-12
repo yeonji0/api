@@ -1,30 +1,33 @@
 package com.board.api.board;
 
 //import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 //import org.springframework.data.annotation.CreatedDate;
 //import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 import java.time.LocalDateTime;
 @Data
-@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+//@EqualsAndHashCode(callSuper = false)
 public class Board {
 
     private Long num;
     private String name;
     private String title;
     private String content;
+    private Date createdDate;
+    private Date modifiedDate;
 
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
-    public Board(){}
-    public Board(Long num, String name, String title, String content) {
-        this.num = num;
-        this.name = name;
-        this.title = title;
-        this.content = content;
-    }
+//    public Board(){};
+//    public Board(Long num,String name, String title,String content,Date createdDate,Date modifiedDate){
+//        super();
+//        this.num=num;
+//        this.name=name;
+//        this.title=title;
+//        this.content=content;
+//        this.createdDate=createdDate;
+//        this.modifiedDate=modifiedDate;
+//    };
 
 }

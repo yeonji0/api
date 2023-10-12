@@ -10,12 +10,9 @@ import java.util.Map;
 
 @Mapper
 public interface BoardMapper {
-    @Select("SELECT * FROM board")
-    Board findByName(@Param("name") String name);
+    @Select("select * from board")
+    List<Board> getBoardList();
+    @Select("SELECT name FROM board WHERE name = #{name}")
+    List<Board> getBoardName();
 
-//    List<Map<String, Object>> getBoardList();
-
-    @Select("SELECT * FROM board")
-    void getNum(@Param("num") Long num);
-//    Board getBoard(int num);
 }

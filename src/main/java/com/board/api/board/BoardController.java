@@ -22,8 +22,11 @@ public class BoardController {
 
 
     @GetMapping("/index")
-    public String index() {
+    public String index(Model model) {
+        List<Board> boardList = boardService.getBoardList();
+        model.addAttribute("boardList", boardList); // 모델에 데이터 추가
+        System.out.println(boardList);
+
         return "index";
     }
-
 }

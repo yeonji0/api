@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.api.board.mapper.BoardMapper">
-    <resultMap id="BaseResultMap" type="board">
+    <resultMap id="BaseResultMap" type="com.board.api.board.Board">
         <id column="num" jdbcType="BIGINT" property="num" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="title" jdbcType="VARCHAR" property="title" />
@@ -9,57 +9,15 @@
         <result column="created_date" jdbcType="DATETIME" property="createdDate" />
         <result column="modified_date" jdbcType="DATETIME" property="modifiedDate" />
     </resultMap>
-    <sql id="example">
+    <sql id="board">
         num, name, title, content, create_date, modified_date
     </sql>
-    <select id="getBoard" resultType="board">
-        SELECT
-            num, name, title, content, created_date, modified_date
-        FROM
-            board
+    <select id="getBoardList" resultType="com.board.api.board.Board" >
+        select * from board
     </select>
-        <select id="getBoardList" resultType="board">
-            select * from board
-        </select>
-        <select id="getBoard" resultType="Board">
-            select * from board where name = #{name}
-        </select>
-    <select id="findAll" resultType="HashMap">
-        select * from tb_user
+
+    <select id="getBoardName" resultType="com.board.api.board.Board">
+        select name from board
     </select>
+
 </mapper>
-<!--<mapper namespace="com.board.api.board.mapper.BoardMapper">-->
-<!--<resultMap id="BaseResultMap" type="board">-->
-<!--    <id column="num" jdbcType="BIGINT" property="num" />-->
-<!--    <result column="name" jdbcType="VARCHAR" property="name" />-->
-<!--    <result column="title" jdbcType="VARCHAR" property="title" />-->
-<!--    <result column="content" jdbcType="TEXT" property="content" />-->
-<!--    <result column="created_date" jdbcType="DATETIME" property="createdDate" />-->
-<!--    <result column="modified_date" jdbcType="DATETIME" property="modifiedDate" />-->
-<!--</resultMap>-->
-<!--    <sql id="example">-->
-<!--      num, name, title, content, create_date, modified_date-->
-<!--    </sql>-->
-<!--    <select id="getBoardList" resultType="board">-->
-<!--        select * from board-->
-<!--    </select>-->
-
-<!--    <select id="getBoard" resultType="Board">-->
-<!--        select * from board where id = #{id}-->
-<!--    </select>-->
-
-<!--    <insert id="createBoard">-->
-<!--        insert into board(name, id) values(#{name}, #{id})-->
-<!--    </insert>-->
-
-<!--    <delete id="deleteBoard">-->
-<!--        delete from board-->
-<!--        where id = #{id}-->
-<!--    </delete>-->
-
-<!--    <update id="updateBoard">-->
-<!--        update board set name = #{name}-->
-<!--        where id = #{id}-->
-<!--    </update>-->
-
-<!--</mapper>-->
