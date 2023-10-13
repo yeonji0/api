@@ -21,19 +21,38 @@
                         </td>
                         <td>
                             <a>
-                                <span><c:out value="${board.title}"/></span> <!-- 제목을 표시하려면 board.title 사용 -->
+                                <span><c:out value="${board.title}"/></span>
                             </a>
                         </td>
                         <td>
                             <span>${board.name}</span>
                         </td>
                         <td>
-                            <span>${board.createdDate}</span> <!-- 작성일을 표시하려면 board.createdDate 사용 -->
+                            <span>${board.createdDate}</span>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example d-flex">
+                <ul class="pagination d-flex"  style="justify-content: center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
             <div>
             </div>
             <button type="button" class="btn btn-primary">글쓰기</button>

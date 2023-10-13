@@ -1,9 +1,12 @@
 package com.board.api.board;
 
 //import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 //import org.springframework.data.annotation.CreatedDate;
 //import org.springframework.data.annotation.LastModifiedDate;
+import java.time.LocalDate;
 import java.util.Date;
 import java.time.LocalDateTime;
 @Data
@@ -16,18 +19,7 @@ public class Board {
     private String name;
     private String title;
     private String content;
-    private Date createdDate;
-    private Date modifiedDate;
-
-//    public Board(){};
-//    public Board(Long num,String name, String title,String content,Date createdDate,Date modifiedDate){
-//        super();
-//        this.num=num;
-//        this.name=name;
-//        this.title=title;
-//        this.content=content;
-//        this.createdDate=createdDate;
-//        this.modifiedDate=modifiedDate;
-//    };
+    private LocalDate createdDate;
+    private LocalDate modifiedDate;
 
 }

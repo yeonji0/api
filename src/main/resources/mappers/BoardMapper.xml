@@ -6,14 +6,21 @@
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="title" jdbcType="VARCHAR" property="title" />
         <result column="content" jdbcType="TEXT" property="content" />
-        <result column="created_date" jdbcType="DATETIME" property="createdDate" />
-        <result column="modified_date" jdbcType="DATETIME" property="modifiedDate" />
+        <result column="created_date" jdbcType="DATE" property="createdDate" />
+        <result column="modified_date" jdbcType="DATE" property="modifiedDate" />
     </resultMap>
     <sql id="board">
-        num, name, title, content, create_date, modified_date
+        num, name, title, content, created_date, modified_date
     </sql>
     <select id="getBoardList" resultType="com.board.api.board.Board" >
-        select * from board
+        select
+            num
+             , name
+             , title
+             , content
+             , created_date
+             , modified_date
+        from board;
     </select>
 
     <select id="getBoardName" resultType="com.board.api.board.Board">
