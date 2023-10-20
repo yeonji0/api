@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.*;
+import java.time.LocalDate;
 import java.text.FieldPosition;
 import java.text.ParsePosition;
 import java.time.LocalDateTime;
@@ -28,13 +26,25 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model) {
         List<Board> boardList = boardService.getBoardList();
-        model.addAttribute("boardList", boardList); // 모델에 데이터 추가
+        model.addAttribute("boardList", boardList);
         System.out.println(boardList);
 
         return "index";
     }
+
+    @GetMapping("/post")
+    public String openBoardPost() throws Exception {
+        return "post";
+    }
+
+    @PostMapping("/post")
+    public String insertBoard(@ModelAttribute Board board) throws Exception {
+        board.setCreatedDate(LocalDate.now());
+        boardService.insertBoard(board);
+        return "redirect:/";
+    }
+
 }

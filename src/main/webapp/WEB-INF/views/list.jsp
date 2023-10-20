@@ -15,12 +15,13 @@
                 </thead>
                 <tbody>
                 <c:forEach var="board" items="${boardList}" varStatus="status">
+                    <c:set var="num" value="${num+1}"></c:set>
                     <tr class="text-center">
                         <td>
-                            <span> <c:out value="${board.num}"/></span>
+                            <span>${num}</span>
                         </td>
                         <td>
-                            <a>
+                            <a href="#">
                                 <span><c:out value="${board.title}"/></span>
                             </a>
                         </td>
@@ -55,7 +56,7 @@
             </nav>
             <div>
             </div>
-            <button type="button" class="btn btn-primary">글쓰기</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='post'">글쓰기</button>
         </div>
     </div>
 </div>

@@ -2,10 +2,9 @@ package com.board.api.board.service;
 
 import com.board.api.board.Board;
 import com.board.api.board.mapper.BoardMapper;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,12 +16,12 @@ public class BoardService {
     public BoardService(BoardMapper boardMapper) {
         this.boardMapper = boardMapper;
     }
+
     public List<Board> getBoardList() {
         return boardMapper.getBoardList();
     }
-    public List<Board> getBoardName() {
-        return boardMapper.getBoardName();
+    @Transactional
+    public void insertBoard(Board board) throws Exception {
+        boardMapper.insertBoard(board);
     }
-
 }
-

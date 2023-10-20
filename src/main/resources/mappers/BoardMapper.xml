@@ -23,8 +23,9 @@
         from board;
     </select>
 
-    <select id="getBoardName" resultType="com.board.api.board.Board">
-        select name from board
-    </select>
+    <insert id="insertBoard" parameterType="com.board.api.board.Board">
+        INSERT INTO board (name, title, content, created_date, modified_date)
+        VALUES (#{name}, #{title}, #{content}, #{createdDate}, #{modifiedDate})
+    </insert>
 
 </mapper>
