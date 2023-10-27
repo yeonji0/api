@@ -6,10 +6,10 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
-//@EqualsAndHashCode(callSuper = false)
 public class Board {
 
     private Long num;
+    private Long rownum;
     private String name;
     private String title;
     private String content;

@@ -3,7 +3,7 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-12">
-            <%= java.time.LocalDateTime.now() %>
+            <p><strong>${count}</strong> 개의 게시글이 있습니다.</p>
             <table class="table">
                 <thead class="thead-light">
                 <tr class="text-center">
@@ -15,14 +15,14 @@
                 </thead>
                 <tbody>
                 <c:forEach var="board" items="${boardList}" varStatus="status">
-                    <c:set var="num" value="${num+1}"></c:set>
+<%--                    <c:set var="num" value="${num+1}"></c:set>--%>
                     <tr class="text-center">
                         <td>
-                            <span>${num}</span>
+                            <span>${board.rownum}</span>
                         </td>
                         <td>
-                            <a href="#">
-                                <span><c:out value="${board.title}"/></span>
+                            <a href="<c:url value='/view?num=${board.num}' />">
+                            <strong><c:out value="${board.title}" /></strong>
                             </a>
                         </td>
                         <td>
