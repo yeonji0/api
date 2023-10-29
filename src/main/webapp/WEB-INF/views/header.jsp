@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <jsp:useBean id="board" class="com.board.api.board.Board" scope="session" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +14,7 @@
     *{margin: 0; padding: 0; box-sizing: border-box;}
     a{color: inherit;text-decoration: none}
     a:link,a:visited{text-decoration: none;color: #333}
+    ul,li{list-style: none;}
 </style>
 <body>
     <div class="navbar navbar-dark bg-dark shadow-sm mb-3">

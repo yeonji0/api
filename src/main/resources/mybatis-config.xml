@@ -16,6 +16,6 @@
 
     <!-- 매퍼 파일 경로를 지정 -->
     <mappers>
-        <mapper resource="classpath:path/com/board/api/board/mapper/BoardMapper.xml"/>
+        <mapper resource="com/board/api/board/mapper/BoardMapper.xml"/>
     </mappers>
 </configuration>

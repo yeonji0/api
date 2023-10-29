@@ -15,14 +15,13 @@
                 </thead>
                 <tbody>
                 <c:forEach var="board" items="${boardList}" varStatus="status">
-<%--                    <c:set var="num" value="${num+1}"></c:set>--%>
                     <tr class="text-center">
                         <td>
-                            <span>${board.rownum}</span>
+                            <span>${status.count}</span>
                         </td>
                         <td>
                             <a href="<c:url value='/view?num=${board.num}' />">
-                            <strong><c:out value="${board.title}" /></strong>
+                                <strong><c:out value="${board.title}" /></strong>
                             </a>
                         </td>
                         <td>
@@ -35,28 +34,43 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example d-flex">
-                <ul class="pagination d-flex"  style="justify-content: center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <div>
+                <c:if test="${pagination.curPage != 1}">
+                    <a href="#" onClick="fn_paging(1)">[처음]</a>
+                </c:if>
+                <c:if test="${pagination.prevPage > 0}">
+                    <a href="#" onClick="fn_paging(${pagination.prevPage})">[이전]</a>
+                </c:if>
+                <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
+                    <c:choose>
+                        <c:when test="${pageNum eq pagination.curPage}">
+                            <span style="font-weight: bold;"><a href="#" onClick="fn_paging(${pageNum})">${pageNum}</a></span>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="#" onClick="fn_paging(${pageNum})">${pageNum}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:if test="${pagination.nextPage <= pagination.pageCnt}">
+                    <a href="#" onClick="fn_paging(${pagination.nextPage})">[다음]</a>
+                </c:if>
+                <c:if test="${pagination.endPage < pagination.pageCnt}">
+                    <a href="#" onClick="fn_paging(${pagination.pageCnt})">[끝]</a>
+                </c:if>
+            </div>
+
             <div>
             </div>
+
+
             <button type="button" class="btn btn-primary" onclick="location.href='post'">글쓰기</button>
         </div>
     </div>
 </div>
+<script>
+    function fn_paging(page) {
+        var url = '/?page=' + page;
+
+        window.location.href = url;
+    }
+</script>

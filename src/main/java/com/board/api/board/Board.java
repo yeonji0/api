@@ -16,4 +16,5 @@ public class Board {
     private LocalDate createdDate;
     private LocalDate modifiedDate;
 
+
 }

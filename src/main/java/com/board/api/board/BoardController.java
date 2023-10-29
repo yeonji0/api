@@ -18,13 +18,22 @@ public class BoardController {
     }
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model) {
         List<Board> boardList = boardService.getBoardList();
-        model.addAttribute("boardList", boardList);
-
         int pageCount = boardList.size();
-        model.addAttribute("count",pageCount);
+        model.addAttribute("count", pageCount);
+        int pageSize = 5;
+        int rangeSize = 10;
 
+        int listCnt = boardService.getBoardCount();
+        model.addAttribute("count", listCnt);
+
+        Pagination pagination = new Pagination(listCnt, page, pageSize, rangeSize);
+
+        List<Board> pagedBoardList = boardService.getListWithPaging(pagination);
+        model.addAttribute("boardList", pagedBoardList);
+
+        model.addAttribute("pagination", pagination);
         return "index";
     }
 
