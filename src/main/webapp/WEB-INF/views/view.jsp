@@ -8,31 +8,34 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 <div class="container">
-    <div class="form-group row">
-        <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
-        <div class="col-sm-10">
-            <input type="text" name="title" class="form-control" id="inputTitle" value="${board.title}" />
+    <form action="update" method="post">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><strong>제목</strong></label>
+            <div class="col-sm-10">
+                <input type="text" name="title" class="form-control" value="${board.title}" />
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label"><strong>이름</strong></label>
-        <div class="col-sm-10">
-            <p>${board.name}</p>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><strong>이름</strong></label>
+            <div class="col-sm-10">
+                <p>${board.name}</p>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label for="inputContent" class="col-sm-2 col-form-label"><strong>내용</strong></label>
-        <div class="col-sm-10">
-            <textarea type="text" name="content" class="form-control" id="inputContent">${board.content}</textarea>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"><strong>내용</strong></label>
+            <div class="col-sm-10">
+                <textarea name="content" class="form-control">${board.content}</textarea>
+            </div>
         </div>
-    </div>
     <div class="row">
         <div class="col-auto mr-auto"></div>
         <div class="col-auto">
-            <input class="btn btn-danger" type="submit" role="button" onClick="location.href='#'" value="삭제" />
-            <input class="btn btn-success" type="submit" role="button" onClick="location.href='#'" value="수정" />
+            <input class="btn btn-danger" type="submit" role="button" onClick="location.href='delete?num=${board.num}'" value="삭제" />
+            <input class="btn btn-success" type="submit" role="button" onClick="location.href='update?num=${board.num}'" value="수정" />
             <input class="btn btn-primary" type="submit" role="button" onClick="location.href='/'" value="리스트" />
         </div>
     </div>
+    <input type='hidden' name='num' value='${board.num}' />
+    </form>
 </div>
 </body>
