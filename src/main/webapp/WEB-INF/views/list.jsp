@@ -17,7 +17,7 @@
                 <c:forEach var="board" items="${boardList}" varStatus="status">
                     <tr class="text-center">
                         <td>
-                            <span>${status.count}</span>
+                            <span>${board.num}</span>
                         </td>
                         <td>
                             <a href="<c:url value='/view?num=${board.num}' />">
@@ -34,35 +34,44 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(1)">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                    </li>
+                    <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(${pagination.prevPage})">
+                                <span aria-hidden="true">&lt;</span>
+                            </a>
+                    </li>
+                    <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
+                        <li class="page-item">
+                            <c:choose>
+                                <c:when test="${pageNum eq pagination.curPage}">
+                                    <span class="page-link active">${pageNum}</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="page-link" href="#" onClick="fn_paging(${pageNum})">${pageNum}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(${pagination.nextPage})">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+                    </li>
+                    <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(${pagination.pageCnt})">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                    </li>
+                </ul>
+            </nav>
             <div>
-                <c:if test="${pagination.curPage != 1}">
-                    <a href="#" onClick="fn_paging(1)">[처음]</a>
-                </c:if>
-                <c:if test="${pagination.prevPage > 0}">
-                    <a href="#" onClick="fn_paging(${pagination.prevPage})">[이전]</a>
-                </c:if>
-                <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
-                    <c:choose>
-                        <c:when test="${pageNum eq pagination.curPage}">
-                            <span style="font-weight: bold;"><a href="#" onClick="fn_paging(${pageNum})">${pageNum}</a></span>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="#" onClick="fn_paging(${pageNum})">${pageNum}</a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-                <c:if test="${pagination.nextPage <= pagination.pageCnt}">
-                    <a href="#" onClick="fn_paging(${pagination.nextPage})">[다음]</a>
-                </c:if>
-                <c:if test="${pagination.endPage < pagination.pageCnt}">
-                    <a href="#" onClick="fn_paging(${pagination.pageCnt})">[끝]</a>
-                </c:if>
             </div>
-
-            <div>
-            </div>
-
-
             <button type="button" class="btn btn-primary" onclick="location.href='post'">글쓰기</button>
         </div>
     </div>
