@@ -27,6 +27,9 @@ public class Pagination {
 
         rangeSetting(curPage); //현재 페이지 기준 페이지 범위 설정
     }
+    public Pagination (int listCnt,int curPage){
+        this(listCnt,curPage,5,10);
+    }
 
     public void setPageCnt(int listCnt) { // 총 페이지 수를 계산하는 메서드
         this.pageCnt = (int) Math.ceil((double) listCnt / pageSize);
@@ -35,7 +38,7 @@ public class Pagination {
     public void rangeSetting(int curPage) { //페이지 범위 메서드
         setPageCnt(listCnt);
         // 현재 페이지를 기반으로 시작 페이지 및 끝 페이지 설정
-        this.startPage = Math.max(1, curPage - (rangeSize / 2));
+        this.startPage = Math.max(1, Math.min(curPage - (rangeSize / 2), pageCnt - rangeSize + 1));
         this.endPage = Math.min(pageCnt, startPage + rangeSize - 1);
 
         // 이전 페이지 및 다음 페이지 설정

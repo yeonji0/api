@@ -3,7 +3,7 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-12">
-            <p><strong>${count}</strong> 개의 게시글이 있습니다.</p>
+            <p><strong>${pagination.listCnt}</strong> 개의 게시글이 있습니다.</p>
             <table class="table">
                 <thead class="thead-light">
                 <tr class="text-center">
@@ -36,20 +36,18 @@
             </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <c:if test="${pagination.curPage != 1}">
+                    <c:if test="${pagination.curPage != 1}">
+                        <li class="page-item">
                             <a class="page-link" href="#" onclick="fn_paging(1)">
                                 <span>&laquo;</span>
                             </a>
-                        </c:if>
-                    </li>
-                    <li class="page-item">
-                        <c:if test="${pagination.curPage != 1}">
+                        </li>
+                        <li class="page-item">
                             <a class="page-link" href="#" onclick="fn_paging(${pagination.prevPage})">
                                 <span>&lt;</span>
                             </a>
-                        </c:if>
-                    </li>
+                        </li>
+                    </c:if>
                     <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
                         <li class="page-item">
                             <c:choose>
@@ -62,16 +60,18 @@
                             </c:choose>
                         </li>
                     </c:forEach>
-                    <li class="page-item">
-                        <a class="page-link" href="#" onClick="fn_paging(${pagination.nextPage})">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" onClick="fn_paging(${pagination.pageCnt})">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    <c:if test="${pagination.curPage != pagination.endPage }">
+                        <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(${pagination.nextPage})">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" onClick="fn_paging(${pagination.pageCnt})">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
             <div>

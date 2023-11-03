@@ -20,13 +20,10 @@ public class BoardController {
 
     @GetMapping("/")
     public String index(@RequestParam(name = "page", defaultValue = "1") Integer page, Model model) {
-        int pageSize = 5;
-        int rangeSize = 5;
 
         int listCnt = boardService.getBoardList();
-        model.addAttribute("count", listCnt);
 
-        Pagination pagination = new Pagination(listCnt, page, pageSize, rangeSize);
+        Pagination pagination = new Pagination(listCnt, page);
 
         List<Board> pagedBoardList = boardService.getListWithPaging(pagination);
         model.addAttribute("boardList", pagedBoardList);
