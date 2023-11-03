@@ -21,7 +21,7 @@
                         </td>
                         <td>
                             <a href="<c:url value='/view?num=${board.num}' />">
-                                <strong><c:out value="${board.title}" /></strong>
+                                <strong><c:out value="${board.title}"/></strong>
                             </a>
                         </td>
                         <td>
@@ -37,19 +37,23 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
-                            <a class="page-link" href="#" onClick="fn_paging(1)">
-                                <span aria-hidden="true">&laquo;</span>
+                        <c:if test="${pagination.curPage != 1}">
+                            <a class="page-link" href="#" onclick="fn_paging(1)">
+                                <span>&laquo;</span>
                             </a>
+                        </c:if>
                     </li>
                     <li class="page-item">
-                            <a class="page-link" href="#" onClick="fn_paging(${pagination.prevPage})">
-                                <span aria-hidden="true">&lt;</span>
+                        <c:if test="${pagination.curPage != 1}">
+                            <a class="page-link" href="#" onclick="fn_paging(${pagination.prevPage})">
+                                <span>&lt;</span>
                             </a>
+                        </c:if>
                     </li>
                     <c:forEach var="pageNum" begin="${pagination.startPage}" end="${pagination.endPage}">
                         <li class="page-item">
                             <c:choose>
-                                <c:when test="${pageNum eq pagination.curPage}">
+                                <c:when test="${pageNum == pagination.curPage}">
                                     <span class="page-link active">${pageNum}</span>
                                 </c:when>
                                 <c:otherwise>
@@ -59,14 +63,14 @@
                         </li>
                     </c:forEach>
                     <li class="page-item">
-                            <a class="page-link" href="#" onClick="fn_paging(${pagination.nextPage})">
-                                <span aria-hidden="true">&gt;</span>
-                            </a>
+                        <a class="page-link" href="#" onClick="fn_paging(${pagination.nextPage})">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
                     </li>
                     <li class="page-item">
-                            <a class="page-link" href="#" onClick="fn_paging(${pagination.pageCnt})">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
+                        <a class="page-link" href="#" onClick="fn_paging(${pagination.pageCnt})">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -78,8 +82,7 @@
 </div>
 <script>
     function fn_paging(page) {
-        var url = '/?page=' + page;
-
+        url = '/?page=' + page;
         window.location.href = url;
     }
 </script>

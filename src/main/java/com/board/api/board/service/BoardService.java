@@ -18,7 +18,7 @@ public class BoardService {
         this.boardMapper = boardMapper;
     }
 
-    public List<Board> getBoardList() {
+    public int getBoardList() {
         return boardMapper.getBoardList();
     }
 
@@ -36,8 +36,9 @@ public class BoardService {
         boardMapper.updateBoard(board);
     }
 
-    public int getBoardCount() {
-        return boardMapper.getBoardCount();
+    @Transactional
+    public void deleteBoard(Long num) throws Exception {
+        boardMapper.deleteBoard(num);
     }
 
     public List<Board> getListWithPaging(Pagination pagination) {
